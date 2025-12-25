@@ -1,0 +1,35 @@
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="">Add Todo</label>
+                        <input type="text" #todoItem class="form-control mb-3">
+                        <button class="btn btn-sm btn-primary w-100" (click)="onTodoAdd()">Add Todo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <ul class="list-group" *ngIf="todoArr.length > 0; else noTodo">
+                <li *ngFor="let todo of todoArr"
+                    class="list-group-item d-flex justify-content-between align-items-center">
+                    <strong>{{todo.todoItem}}</strong>
+                    <div>
+                        <button mat-mini-fab color="primary" class="mr-3"><mat-icon>edit</mat-icon></button>
+                        <button mat-mini-fab color="warn"
+                            (click)="removeTodo(todo.id)"><mat-icon>delete</mat-icon></button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <ng-template #noTodo>
+            <p class="alert alert-warning text-center">
+                NO TODOS !!!
+            </p>
+        </ng-template>
+    </div>
+</div>
